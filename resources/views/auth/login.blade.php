@@ -1,5 +1,11 @@
 <x-guest-layout>
+<img src="/images/Login.png" alt= "Cover Image"/>
     <!-- Session Status -->
+    <x-slot name="logo">
+    <!-- Remove the Laravel logo -->
+</x-slot>
+
+    
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">
