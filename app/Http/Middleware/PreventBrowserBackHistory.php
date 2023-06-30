@@ -15,7 +15,9 @@ class PreventBrowserBackHistory
      */
     public function handle(Request $request, Closure $next): Response
     {
-
+        /* 
+   This is the function that prevents logging back to a session by pressing back
+*/
        $response = $next($request);
        $response->headers->set('Cache-Control','no-cache,no-store, max-age=0, must-revalidate');
        $response->headers->set('Pragma','no-cache');
