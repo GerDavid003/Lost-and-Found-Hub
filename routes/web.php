@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LostItemController;
 use App\Http\Controllers\FoundItemController;
+use App\Http\Controllers\Auth\AuthenticatedSessionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
  Route::get('/lost-items/create', [LostItemController::class, 'create'])->name('lost-items.create');
  Route::post('/lost-items', [LostItemController::class, 'store'])->name('lost-items.store');
 
+ //Logout
+ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
  
 Route::middleware('auth')->group(function () {

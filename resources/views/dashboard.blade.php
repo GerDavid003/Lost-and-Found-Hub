@@ -1,67 +1,34 @@
-  <x-app-layout>
-      <x-slot name="header">
-          <h2 class="font-bold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-              {{__('Dashboard')}}
-          </h2>
-      </x-slot>
+<x-admin-layout>
+    <x-slot name="header">
+        <h2 class="font-bold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{__('Dashboard')}}
+        </h2>
+    </x-slot>
 
-      <div class="py-12">
-          <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-              <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                  <div class="p-6 text-gray-900 dark:text-gray-100">
+    <div class="main-content min-h-screen bg-gray-900" > <!-- Add the min-h-screen class to make the div fill the whole page height -->
+        <div class="py-9">
+            <div class="max-w-10xl mx-auto sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 flex-grow min-h-fill">
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg col-span-8 xl:col-span-4">
+                        <div class="p-8 text-gray-900 dark:text-gray-100">
+                            <!-- Add your dashboard content here -->
+                            @auth
+                            <h1 class="text-2xl font-bold mb-4">Welcome, {{ Auth::user()->name }}</h1>
+                            @endauth
+                            <!-- Summary or statistics -->
+                            <div class="mb-8">
+                                <h4 class="text-xl font-bold">Summary</h4>
+                                <div class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded">
+                                    <p class="text-lg">Total Lost Items: {{ $totalLostItems }}</p>
+                                    <p class="text-lg">Total Found Items: {{ $totalFoundItems }}</p>
+                                    <p class="text-lg">Total Users: {{ $totalUsers }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                      <!-- Add your dashboard content here -->
-                      <div class="container">
-                          <h1>Welcome, {{ Auth::user()->name }}</h1>
-                          <!-- Display user's profile picture -->
-                          <img src="{{ Auth::user()->profile_picture }}" alt="Profile Picture">
-
-                          <!-- Summary or statistics -->
-                          <div class="summary">
-                              <h3>Summary</h3>
-                              <p>Total Lost Items: {{ $totalLostItems }}</p>
-                              <p>Total Found Items: {{ $totalFoundItems }}</p>
-                              <p>Total Users: {{ $totalUsers }}</p>
-                          </div>
-
-
-                          <!-- Quick links or shortcuts -->
-                          <div class="quick-links">
-                              <h3>Quick Links</h3>
-                              <ul>
-                                  <li><a href="{{ route('lost-items.index') }}">View Lost Items</a></li>
-                                  <li><a href="{{ route('found-items.index') }}">View Found Items</a></li>
-                                  <li><a href="{{ route('lost-items.create') }}">Post Lost Item</a></li>
-                              </ul>
-                          </div>
-
-                          <!-- Action buttons -->
-                          <div class="actions">
-                              <h3>Actions</h3>
-                              <button>Create New Item</button><br
-                              <button>Initiate Process</button>
-                          </div>
-
-                          <!-- Data visualization 
-                          <div class="data-visualization">
-                              <h3>Data Visualization</h3>
-                               Add your chart or graph component here 
-                          </div>-->
-
-                          <!-- Personalized recommendations 
-                          <div class="recommendations">
-                              <h3>Personalized Recommendations</h3>
-                              <ul>
-                                  <li>Suggestion 1</li>
-                                  <li>Suggestion 2</li>
-                                  <li>Suggestion 3</li>
-                              </ul>
-                          </div>-->
-
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-
-  </x-app-layout>
+</x-admin-layout>
