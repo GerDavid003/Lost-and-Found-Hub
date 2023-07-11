@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="main-content min-h-screen bg-gray-900" > <!-- Add the min-h-screen class to make the div fill the whole page height -->
+    <div class="main-content bg-gray-900"> <!-- Add the min-h-screen class to make the div fill the whole page height -->
         <div class="py-9">
             <div class="max-w-10xl mx-auto sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 flex-grow min-h-fill">
@@ -16,13 +16,20 @@
                             <h1 class="text-2xl font-bold mb-4">Welcome, {{ Auth::user()->name }}</h1>
                             @endauth
                             <!-- Summary or statistics -->
-                            <div class="mb-8">
+                            <div class="mb-8 h-fill-screen">
                                 <h4 class="text-xl font-bold">Summary</h4>
-                                <div class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded">
-                                    <p class="text-lg">Total Lost Items: {{ $totalLostItems }}</p>
-                                    <p class="text-lg">Total Found Items: {{ $totalFoundItems }}</p>
-                                    <p class="text-lg">Total Users: {{ $totalUsers }}</p>
+                                <div class="bg-blue-900 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded">
+                                    <div class="px-4 py-6">
+                                        <p class="text-lg">Total Lost Items: {{ $totalLostItems }}</p>
+                                    </div>
+                                    <div class="px-4 py-6">
+                                        <p class="text-lg">Total Found Items: {{ $totalFoundItems }}</p>
+                                    </div>
+                                    <div class="px-4 py-6">
+                                        <p class="text-lg">Total Users: {{ $totalUsers }}</p>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
