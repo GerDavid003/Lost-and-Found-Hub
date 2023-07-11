@@ -59,8 +59,8 @@
                 <x-side-nav-link href="{{ route('lost-items.create') }}" :active="request()->routeIs('lost-items.create')">
                     Post Lost Items
                 </x-side-nav-link>
-                <x-side-nav-link href="{{ route('lost-items.create') }}" :active="request()->routeIs('lost-items.create')">
-                    Create New Item
+                <x-side-nav-link href="{{ route('lost-items.create') }}" :active="request()->routeIs('found-items.create')">
+                    Post Found Items
                 </x-side-nav-link>
                 <x-side-nav-link href="{{ route('lost-items.store') }}" :active="request()->routeIs('lost-items.store')">
                     View New Item

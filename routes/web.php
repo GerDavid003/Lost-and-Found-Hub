@@ -44,6 +44,11 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
  Route::get('/lost-items/create', [LostItemController::class, 'create'])->name('lost-items.create');
  Route::post('/lost-items', [LostItemController::class, 'store'])->name('lost-items.store');
 
+ // Post Found Item
+Route::get('/found-items/create', [FoundItemController::class, 'create'])->name('found-items.create');
+Route::post('/found-items', [FoundItemController::class, 'store'])->name('found-items.store');
+
+
  //Logout
  Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
