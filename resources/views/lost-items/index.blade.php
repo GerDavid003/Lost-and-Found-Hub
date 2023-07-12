@@ -4,7 +4,8 @@
 <div class="container mx-auto px-4 py-8 bg-blue-900">
     <h1 class="text-3xl font-bold mb-4 text-white">View Lost Items</h1>
     <div class="mb-4 p-2">
-        <a href="{{ route('lost-items.create') }}" class="btn btn-primary bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Add Lost Item</a>
+        <a href="{{ route('lost-items.create') }}" class="btn btn-primary bg-blue-500 hover:bg-green-700
+         text-white font-bold py-2 px-4 rounded">Add Lost Item</a>
     </div>
     @if (session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>
@@ -14,9 +15,9 @@
         <div class="card mb-4">
             <img src="{{ asset('storage/' . $lostItem->image) }}" class="card-img-top" alt="Lost Item Image">
             <div class="card-body">
-                <h5 class="card-title">{{ $lostItem->title }}</h5>
+                <h5 class="card-title">{{ $lostItem->name }}</h5>
                 <p class="card-text">{{ $lostItem->description }}</p>
-                <p class="card-text">Posted by: {{ $lostItem->user->email }}</p>
+                <p class="card-text">Posted by: {{ $lostItem->user->name }}</p>
                 <p class="card-text">Location: {{ $lostItem->location }}</p>
                 <p class="card-text">Date Found: {{ $lostItem->date_found }}</p>
                 @if (auth()->id() == $lostItem->user_id)

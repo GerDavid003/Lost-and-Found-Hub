@@ -35,11 +35,11 @@ class LostItemController extends Controller
     {
         // Validate the request data
         $validatedData = $request->validate([
-            'title' => 'required',
+            'name' => 'required',
             'description' => 'required',
             'date_found' => 'required|date',
             'location' => 'required',
-            'image' => 'required',
+            'image' => 'required|image',
             // Add any other validation rules you need
         ]);
 
@@ -83,11 +83,25 @@ class LostItemController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'time_lost' => 'required',
-            'date_found' => 'required',
+            'date_found' => 'required|date',
             'location' => 'required',
+            'image' => 'required|image',
             // Add any other validation rules you need
         ]);
+        // Upload the image file
+    $imagePath = $request->file('image')->store('lost-item-images', 'public');
+
+     // Create a new lost item with the form data
+     $lostItem = new LostItem();
+     $lostItem->name = $validatedData['title'];
+     $lostItem->image = $imagePath;
+     $lostItem->description = $validatedData['description'];
+     $lostItem->date_found = $validatedData['date_found'];
+     $lostItem->location = $validatedData['location'];
+ 
+     // Save the lost item in the database
+     $lostItem->save();
+
 
         // Retrieve the specific lost item from the database
         $lostItem = LostItem::findOrFail($lostItem);

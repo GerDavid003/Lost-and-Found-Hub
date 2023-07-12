@@ -42,7 +42,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
  // Post Lost Item
  Route::get('/lost-items/create', [LostItemController::class, 'create'])->name('lost-items.create');
- Route::post('/lost-items/create', [LostItemController::class, 'store'])->name('lost-items.store');
+ Route::post('/lost-items', [LostItemController::class, 'store'])->name('lost-items.store');
 
  // Lost Items
 Route::resource('lost-items', LostItemController::class)->except([

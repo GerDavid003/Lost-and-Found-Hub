@@ -15,5 +15,8 @@ class LostItem extends Model
         'description',
         'location',
         'is_found',
+        'date_found',
+        'user_id',
+        'user',
     ];
 }
