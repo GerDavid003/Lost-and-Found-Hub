@@ -15,8 +15,13 @@ class LostItem extends Model
         'description',
         'location',
         'is_found',
-        'date_found',
+        'date_lost',
         'user_id',
         'user',
     ];
+    public function user()
+{
+    return $this->belongsTo(User::class);
+}
+
 }
