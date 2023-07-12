@@ -42,11 +42,21 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
  // Post Lost Item
  Route::get('/lost-items/create', [LostItemController::class, 'create'])->name('lost-items.create');
- Route::post('/lost-items', [LostItemController::class, 'store'])->name('lost-items.store');
+ Route::post('/lost-items/create', [LostItemController::class, 'store'])->name('lost-items.store');
+
+ // Lost Items
+Route::resource('lost-items', LostItemController::class)->except([
+    'create', 'store'
+]);
 
  // Post Found Item
 Route::get('/found-items/create', [FoundItemController::class, 'create'])->name('found-items.create');
-Route::post('/found-items', [FoundItemController::class, 'store'])->name('found-items.store');
+Route::post('/found-items/create', [FoundItemController::class, 'store'])->name('found-items.store');
+
+// Found Items
+Route::resource('found-items', FoundItemController::class)->only([
+    'create', 'store'
+]);
 
 
  //Logout

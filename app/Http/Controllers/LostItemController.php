@@ -35,8 +35,11 @@ class LostItemController extends Controller
     {
         // Validate the request data
         $validatedData = $request->validate([
-            'name' => 'required',
+            'title' => 'required',
             'description' => 'required',
+            'date_found' => 'required|date',
+            'location' => 'required',
+            'image' => 'required',
             // Add any other validation rules you need
         ]);
 
@@ -50,10 +53,10 @@ class LostItemController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(LostItem $lostItem)
     {
         // Retrieve the specific lost item from the database
-        $lostItem = LostItem::findOrFail($id);
+        $lostItem = LostItem::findOrFail($lostItem);
 
         // Return the view to display the specific lost item
         return view('lost-items.show', compact('lostItem'));
@@ -62,10 +65,10 @@ class LostItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(LostItem $lostItem)
     {
         // Retrieve the specific lost item from the database
-        $lostItem = LostItem::findOrFail($id);
+        $lostItem = LostItem::findOrFail($lostItem);
 
         // Return the edit form view for the specific lost item
         return view('lost-items.edit', compact('lostItem'));
@@ -74,17 +77,20 @@ class LostItemController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, LostItem $lostItem)
     {
         // Validate the request data
         $validatedData = $request->validate([
             'name' => 'required',
             'description' => 'required',
+            'time_lost' => 'required',
+            'date_found' => 'required',
+            'location' => 'required',
             // Add any other validation rules you need
         ]);
 
         // Retrieve the specific lost item from the database
-        $lostItem = LostItem::findOrFail($id);
+        $lostItem = LostItem::findOrFail($lostItem);
 
         // Update the lost item with the validated data
         $lostItem->update($validatedData);
@@ -96,10 +102,10 @@ class LostItemController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(LostItem $lostItem)
     {
         // Retrieve the specific lost item from the database
-        $lostItem = LostItem::findOrFail($id);
+        $lostItem = LostItem::findOrFail($lostItem);
 
         // Delete the lost item from the database
         $lostItem->delete();

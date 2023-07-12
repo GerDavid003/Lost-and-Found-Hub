@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lost_items', function (Blueprint $table) {
-            $table->id();
-            $table->string('title')->nullable();
-            $table->text('description');
-            $table->string('location');
-            $table->boolean('is_found')->default(false);
-            $table->timestamps();
+        Schema::table('lost_items', function (Blueprint $table) {
+           $table->string('name');
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lost_items');
+        Schema::table('lost_items', function (Blueprint $table) {
+            //
+        });
     }
 };
