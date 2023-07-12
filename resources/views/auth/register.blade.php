@@ -1,4 +1,5 @@
 <x-guest-layout>
+<img src="/images/Login.png" alt= "Cover Image"/>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -24,6 +25,9 @@
                             type="password"
                             name="password"
                             required autocomplete="new-password" />
+                            <p class="text-red-600 text-sm mt-2">
+                                A minimum of 8 characters is required
+                            </p>
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>

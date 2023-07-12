@@ -1,4 +1,5 @@
 <x-guest-layout>
+<img src="/images/Login.png" alt= "Cover Image"/>
     <form method="POST" action="{{ route('password.store') }}">
         @csrf
 
