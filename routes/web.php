@@ -34,10 +34,6 @@ Route::get('/email/verify', function () {
 // Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-// item submission form
-Route::post('/submit-item', 'ItemController@store')->name('item.submit');
-
-
  // View Lost Items
  Route::get('/lost-items', [LostItemController::class, 'index'])->name('lost-items.index');
 
