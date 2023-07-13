@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('lost_items', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('title')->default('Untitled');
-            $table->text('description')->nullable();
+            $table->string('name');
+            $table->text('description');
             $table->string('location');
             $table->boolean('is_found')->default(false);
             $table->timestamps();
+            $table->string('date_lost');
         });
     }
 

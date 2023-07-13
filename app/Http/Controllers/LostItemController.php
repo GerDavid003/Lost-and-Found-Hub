@@ -89,18 +89,21 @@ class LostItemController extends Controller
             // Add any other validation rules you need
         ]);
         // Upload the image file
-    $imagePath = $request->file('image')->store('lost-item-images', 'public');
+        $imagePath = $request->file('image')->store('lost-item-images', 'public');
 
-     // Create a new lost item with the form data
-     $lostItem = new LostItem();
-     $lostItem->name = $validatedData['title'];
-     $lostItem->image = $imagePath;
-     $lostItem->description = $validatedData['description'];
-     $lostItem->date_found = $validatedData['date_found'];
-     $lostItem->location = $validatedData['location'];
- 
-     // Save the lost item in the database
-     $lostItem->save();
+        // Create a new lost item with the form data
+        $lostItem = new LostItem();
+        $lostItem->name = $validatedData['name'];
+        $lostItem->image = $imagePath;
+        $lostItem->description = $validatedData['description'];
+        $lostItem->date_found = $validatedData['date_lost'];
+        $lostItem->location = $validatedData['location'];
+
+        // Associate the currently authenticated user with the lost item
+        $lostItem->user_id = auth()->user()->id;
+
+        // Save the lost item in the database
+        $lostItem->save();
 
 
         // Retrieve the specific lost item from the database

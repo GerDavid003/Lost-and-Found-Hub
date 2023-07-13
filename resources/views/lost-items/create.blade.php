@@ -8,7 +8,7 @@
 
         <!-- Add form fields for the details of the lost item -->
         <div class="form-group">
-            <label for="title" class="block text-white font-semibold mb-2">Item Name:</label>
+            <label for="name" class="block text-white font-semibold mb-2">Item Name:</label>
             <input type="text" name="name" id="title" class="form-control border border-gray-300 rounded p-2" required>
         </div>
 
@@ -25,7 +25,7 @@
         
         <div class="form-group mb-4">
             <label for="date_found" class="block text-white font-semibold mb-2">Date Lost:</label>
-            <input type="date" name="date_found" id="date_found" class="border border-gray-300 rounded p-2" required>
+            <input type="date" name="date_lost" id="date_lost" class="border border-gray-300 rounded p-2" required>
         </div>
 
 
